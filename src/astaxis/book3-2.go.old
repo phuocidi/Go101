@@ -1,0 +1,50 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
+)
+
+type MyMux struct {
+}
+
+func (p *MyMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path == "/contact-us" {
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintf(w, "<h1>Hello <b>Huu Phuoc Tran</b></h1>")
+		}(w, r)
+
+		return
+	}
+	http.NotFound(w, r)
+	return
+}
+
+func sayhelloName(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	fmt.Println(r.Form)
+	fmt.Println("path", r.URL.Path)
+	fmt.Println("scheme", r.URL.Scheme)
+	fmt.Println(r.Form["url_long"])
+	for k, v := range r.Form {
+		fmt.Println("key: ", k)
+		fmt.Println("value: ", strings.Join(v, ""))
+	}
+	fmt.Fprintf(w, "<h1>Hello astaxie<h1>")
+}
+
+func main() {
+	mux := &MyMux{}
+
+	// http.HandleFunc("/", sayhelloName)
+	// err := http.ListenAndServe(":9090", nil)
+	// if err != nil {
+	// 	log.Fatal("ListenAndServe: ", err)
+	// }
+	err := http.ListenAndServe(":9091", mux)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
+}
