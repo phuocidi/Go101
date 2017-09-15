@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Sign in</h1>
+		</div>
+		
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">In order to chat, you must be signed in</h3>
+			</div>
+			<div class="panel-body">
+			<p>Select the service you would like to sign in with: </p>
+			<!-- 			 
+				<form action="/auth" method="get" id="nameform">
+			   	<input type="radio" name="provider" value="facebook">Facebook<br>
+			 	<input type="radio" name="provider" value="github"> GitHub<br>
+				<input type="radio" name="provider" value="google"> Google+
+				<button type="submit" form="nameform" value="Submit">Submit</button>
+			 </form> 
+
+			 -->
+			<ul>
+				<li><a href="/auth/login/google">Singin with google</a></li>
+			</ul>
+			
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
